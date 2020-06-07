@@ -777,12 +777,13 @@ lbool Solver::search(int nof_conflicts)
 
             if (next == lit_Undef){
                 // New variable decision:
-                decisions++;
                 next = pickBranchLit();
-
-                if (next == lit_Undef)
+                if (next == lit_Undef){
                     // Model found:
                     return l_True;
+                }else{
+                  decisions++;
+                }
             }
 
             // Increase decision level and enqueue 'next'
